@@ -1,0 +1,118 @@
+{
+  "version": "v0.50",
+  "seed_namespace": "paperA_stage4_v050",
+  "purpose": "frozen Stage-4 power study under prespecified injected alternatives",
+  "smoke": false,
+  "cohort_size": 8,
+  "generator_cells": [
+    [
+      "gaussian",
+      0.2
+    ],
+    [
+      "gaussian",
+      0.5
+    ],
+    [
+      "gaussian",
+      0.8
+    ],
+    [
+      "periodic",
+      0.2
+    ],
+    [
+      "periodic",
+      0.5
+    ],
+    [
+      "periodic",
+      0.8
+    ],
+    [
+      "tinnov",
+      0.2
+    ],
+    [
+      "tinnov",
+      0.5
+    ],
+    [
+      "tinnov",
+      0.8
+    ]
+  ],
+  "cohort_sampling": "8 of 9 family x phi cells without replacement per cohort; composition shared across mechanisms/levels",
+  "lambda": 4.0,
+  "seasonal_probabilities": [
+    0.002164885264891286,
+    0.0012679069883783911,
+    0.002164885264891286,
+    0.009293352932886788,
+    0.06482034911460262,
+    0.33869412444205305,
+    0.6889001777185819,
+    0.7909863140655908,
+    0.6889001777185819,
+    0.33869412444205305,
+    0.06482034911460262,
+    0.009293352932886788
+  ],
+  "neff_p": 4.964583905619269,
+  "neff_var": 6.206923406679964,
+  "designs": [
+    [
+      "baseline",
+      0.0
+    ],
+    [
+      "persistent_regime_alignment",
+      0.2
+    ],
+    [
+      "persistent_regime_alignment",
+      0.4
+    ],
+    [
+      "persistent_regime_alignment",
+      0.6
+    ],
+    [
+      "persistent_regime_alignment",
+      0.8
+    ],
+    [
+      "history_feedback",
+      0.25
+    ],
+    [
+      "history_feedback",
+      0.5
+    ],
+    [
+      "history_feedback",
+      0.75
+    ],
+    [
+      "history_feedback",
+      1.0
+    ]
+  ],
+  "cohorts_per_design": 150,
+  "B": 500,
+  "block_years": 50,
+  "q_extreme": 0.9,
+  "alpha": 0.05,
+  "sim_years": 252,
+  "output_years": 251,
+  "primary_gate": "positive delta in >=6/8 units AND synchronized-surrogate aggregate p<0.05",
+  "aggregate_statistic": "mean_i[median(theta_null_i)-theta_obs_i]",
+  "aggregate_null": "mean_i[median(theta_null_i)-theta_null_i,b], synchronized by surrogate index b",
+  "amazon_delta_reference": 0.085009,
+  "amazon_reference_usage": "descriptive nearest-grid comparison only; never used to tune mechanisms or kappa grid",
+  "regime_rho": 0.85,
+  "history_horizon_months": 24,
+  "history_tau_months": 6.0,
+  "history_iterations": 4,
+  "monthly_iaaft_iter": 12
+}

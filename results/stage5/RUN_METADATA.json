@@ -1,0 +1,26 @@
+{
+  "version": "v0.60",
+  "smoke": false,
+  "families": [
+    "gaussian",
+    "periodic",
+    "tinnov"
+  ],
+  "phis": [
+    0.2,
+    0.5,
+    0.8
+  ],
+  "reps_per_cell": 150,
+  "B": 149,
+  "scenarios": [
+    "absolute_lambda4",
+    "oracle_percentile",
+    "estimated_percentile_15y",
+    "estimated_percentile_30y",
+    "estimated_percentile_60y"
+  ],
+  "native_block_years": 252,
+  "primary_outcome": "count",
+  "seed_namespace": "paperA_stage5AB_v060"
+}

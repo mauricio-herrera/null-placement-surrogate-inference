@@ -1,0 +1,32 @@
+{
+  "version": "v0.60",
+  "smoke": false,
+  "B": 99,
+  "n_selected": 450,
+  "C1_max_theta_abs_diff": 1.1102230246251565e-16,
+  "C1_deterministic_theta_identity_pass": true,
+  "C2_recomputed": {
+    "annual_rejections": 1697,
+    "native_rejections": 629,
+    "annual_only": 1084,
+    "native_only": 16
+  },
+  "C2_expected": {
+    "annual_rejections": 1697,
+    "native_rejections": 629,
+    "annual_only": 1084,
+    "native_only": 16
+  },
+  "C2_exact_headline_reaggregation_pass": true,
+  "C3_annual_rejection_rate": 0.08,
+  "C3_native_rejection_rate": 0.02666666666666667,
+  "C3_annual_only": 24,
+  "C3_native_only": 0,
+  "C3_paired_rate_difference": 0.05333333333333334,
+  "C3_paired_one_sided_p": 5.960464477539063e-08,
+  "C3_native_month_exact_min": 1.0,
+  "C3_annual_spectral_error_median": 0.0014702904854314552,
+  "C3_native_spectral_error_median": 0.00021464367845029886,
+  "C3_independent_surrogate_direction_pass": true,
+  "overall_independent_closure_pass": true
+}

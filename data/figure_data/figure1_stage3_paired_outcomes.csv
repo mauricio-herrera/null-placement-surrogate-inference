@@ -1,0 +1,5 @@
+index_resolution,native_resolution,count,outcome
+no_reject,no_reject,11787,neither
+no_reject,reject,16,native_only
+reject,no_reject,1084,index_only
+reject,reject,613,both

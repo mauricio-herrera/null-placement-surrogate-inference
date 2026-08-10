@@ -1,0 +1,2 @@
+bbec8904a778eff75ee9df29961eb7822907260d14b70c7be35629177709f093  /mnt/data/paperA_stage4_power_v050.py
+e43248a5cf4fb79f2fdce130d820ebb2cc3fb6f6b2fde58999464dc05a1f4fc8  /mnt/data/PROTOCOLO_STAGE4_POWER_V050.md

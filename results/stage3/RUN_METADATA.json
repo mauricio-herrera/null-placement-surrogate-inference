@@ -1,0 +1,51 @@
+{
+  "version": "v0.40",
+  "seed_namespace": "paperA_stage3_v040",
+  "purpose": "frozen Stage-3 focused confirmatory synthetic experiment",
+  "smoke": false,
+  "families": [
+    "gaussian",
+    "periodic",
+    "tinnov"
+  ],
+  "phis": [
+    0.2,
+    0.5,
+    0.8
+  ],
+  "lambdas": [
+    0.0,
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "blocks": [
+    50,
+    252
+  ],
+  "observables": [
+    "count",
+    "maxrun"
+  ],
+  "primary_observable": "count",
+  "primary_block": 252,
+  "robustness_block": 50,
+  "phase": 0,
+  "reps_per_cell": 300,
+  "B": 249,
+  "strict_mc_rule": "p < 0.05",
+  "alpha": 0.05,
+  "attainable_mc_size": 0.048,
+  "q_extreme": 0.9,
+  "K_dry": 3.0,
+  "sim_years": 252,
+  "output_years": 251,
+  "chunk_size": 25,
+  "annual_iaaft_iter": 30,
+  "monthly_iaaft_iter": 12,
+  "confirmatory_primary_test": "paired exact discordance: annual-only > native-only, count, block=252",
+  "confirmatory_concentration_test": "one-sided Fisher exact: misattribution lambda=4 > lambda=0",
+  "secondary_trend_test": "one-sided Cochran-Armitage-style score using frozen lambda values",
+  "technical_native_anticonservative_tolerance": "pooled primary native rejection <= 0.065"
+}

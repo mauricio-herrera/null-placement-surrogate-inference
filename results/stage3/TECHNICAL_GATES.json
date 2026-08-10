@@ -1,0 +1,17 @@
+{
+  "B": 249,
+  "attainable_mc_size_strict_p_lt_005": 0.048,
+  "exact_total_min": 1.0,
+  "exact_group_min": 1.0,
+  "annual_valid_min": 1.0,
+  "native_valid_min": 1.0,
+  "annual_spectral_error_median": 0.00148712080084085,
+  "annual_spectral_error_p99": 0.014648106668998321,
+  "native_spectral_error_median": 0.0029588369868587,
+  "native_spectral_error_p99": 0.007249711967516916,
+  "primary_native_rejection_rate": 0.046592592592592595,
+  "primary_native_not_anticonservative_gate": true,
+  "count_exact_gate": true,
+  "valid_fraction_gate": true,
+  "spectral_fidelity_gate": true
+}

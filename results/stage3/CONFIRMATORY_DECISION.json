@@ -1,0 +1,8 @@
+{
+  "technical_gates_pass": true,
+  "H1_primary_paired_direction_pass": true,
+  "H2_high_concentration_pass": true,
+  "note": "H1 is primary. H2 is tested only as the prespecified concentration contrast after H1. maxrun and trend tests are secondary.",
+  "stage3_primary_success": true,
+  "stage3_full_directional_success": true
+}

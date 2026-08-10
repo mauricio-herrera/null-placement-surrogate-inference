@@ -1,0 +1,27 @@
+{
+  "title": "Where the null is imposed matters: surrogate inference after thresholding and temporal aggregation - reproducibility package",
+  "description": "Fixed protocols, analysis scripts, row-level and summary outputs, independent-code audit, CMIP6 Amazon reconstruction workflow, figure source data, and final figure-generation scripts supporting a methodological study of surrogate-null placement before versus after thresholding and temporal aggregation.",
+  "creators": [
+    {
+      "name": "Herrera-Marín, Mauricio",
+      "orcid": "0000-0002-9604-3077",
+      "affiliation": "Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile"
+    }
+  ],
+  "keywords": [
+    "surrogate data",
+    "threshold processes",
+    "temporal aggregation",
+    "coarse graining",
+    "extremal clustering",
+    "percentile thresholds",
+    "climate extremes",
+    "constrained randomization",
+    "CMIP6"
+  ],
+  "version": "1.0.0",
+  "publication_date": "2026-08-10",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit"
+}

@@ -1,0 +1,8 @@
+{
+  "technical_pass": true,
+  "H_P0_consistency_pass": true,
+  "H_P1_oracle_mitigation_pass": true,
+  "H_P2_30y_mitigation_pass": true,
+  "stage5AB_primary_success": true,
+  "stage5AB_applied_success": true
+}

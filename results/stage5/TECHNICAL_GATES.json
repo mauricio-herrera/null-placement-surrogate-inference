@@ -1,0 +1,17 @@
+{
+  "version": "v0.60",
+  "B": 149,
+  "attainable_mc_size_strict_p_lt_005": 0.04666666666666667,
+  "P0_indicator_identity_fraction": 1.0,
+  "P0_indicator_identity_gate": true,
+  "native_count_exact_min": 1.0,
+  "native_month_count_exact_min": 1.0,
+  "annual_valid_min": 1.0,
+  "native_valid_min": 1.0,
+  "annual_spectral_error_median": 0.0013682666658386,
+  "annual_spectral_error_p99": 0.014243461395777809,
+  "native_spectral_error_median": 0.00024368117664649999,
+  "native_spectral_error_p99": 0.0004249402355256,
+  "oracle_native_rejection_rate": 0.04296296296296296,
+  "technical_pass": true
+}

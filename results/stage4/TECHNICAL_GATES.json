@@ -1,0 +1,21 @@
+{
+  "B": 500,
+  "attainable_single_test_size_strict_p_lt_005": 0.0499001996007984,
+  "n_null_cohorts": 150,
+  "null_full_gate_false_positive_rate": 0.04,
+  "null_aggregate_rejection_rate": 0.06,
+  "null_single_unit_rejection_rate": 0.04083333333333333,
+  "null_full_gate_calibration_gate_le_0_10": true,
+  "null_single_unit_calibration_gate_le_0_065": true,
+  "native_valid_fraction_min": 1.0,
+  "native_valid_gate": true,
+  "native_spectral_error_median": 0.006794414712881849,
+  "native_spectral_error_p99": 0.02801066270596858,
+  "spectral_fidelity_gate": true,
+  "native_count_exact_min": 1.0,
+  "native_group_count_exact_min": 1.0,
+  "surrogate_exactness_gate": true,
+  "injection_multiset_exact_all": true,
+  "injection_event_count_exact_all": true,
+  "all_technical_gates_pass": true
+}

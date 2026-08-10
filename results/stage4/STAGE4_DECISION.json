@@ -1,0 +1,6 @@
+{
+  "technical_gates_pass": true,
+  "stage4_complete": true,
+  "interpretation_rule": "Power is mechanism-specific. Amazon Delta=0.085 is compared only to nearest simulated grid points; no universal interpolation is authorized.",
+  "next_step_if_pass": "audit Stage 4, then integrate Stage 3 + Stage 4 + frozen Amazon result into Paper A evidence matrix"
+}

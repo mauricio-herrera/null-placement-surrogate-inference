@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this reproducibility package, please cite the archived release."
+title: "Where the null is imposed matters: surrogate inference after thresholding and temporal aggregation - reproducibility package"
+version: 1.0.0
+date-released: 2026-08-10
+authors:
+  - family-names: "Herrera-Marín"
+    given-names: "Mauricio"
+    orcid: "https://orcid.org/0000-0002-9604-3077"
+    email: "mherrera@udd.cl"
+    affiliation: "Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile"
+keywords:
+  - surrogate data
+  - threshold processes
+  - temporal aggregation
+  - coarse graining
+  - extremal clustering
+  - climate extremes
+  - constrained randomization
+license: MIT
+repository-code: "https://github.com/mauricio-herrera/null-placement-surrogate-inference"

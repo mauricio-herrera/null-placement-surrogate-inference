@@ -1,0 +1,5 @@
+mechanism,target_power,first_grid_kappa_reaching_target,power,median_cohort_mean_delta
+persistent_regime_alignment,0.5,,,
+persistent_regime_alignment,0.8,,,
+history_feedback,0.5,,,
+history_feedback,0.8,,,

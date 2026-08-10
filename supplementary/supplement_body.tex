@@ -1,0 +1,216 @@
+\section{Protocol hierarchy}\label{protocol-hierarchy}
+
+The final manuscript draws on four fixed computational components:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  confirmatory resolution experiment (13,500 trajectories, \(B=249\));
+\item
+  mechanism-specific sensitivity experiment (8-unit cohorts, \(B=500\));
+\item
+  seasonal probability-equalization experiment (1350 trajectories, \(B=149\));
+\item
+  independent computational audit (450-trajectory subset, \(B=99\)).
+\end{enumerate}
+
+Each confirmatory protocol and executable was hashed before the corresponding scientific run. Pilot and smoke runs were technical only and are not pooled with confirmatory results.
+
+\section{Exact native surrogate algorithm}\label{exact-native-surrogate-algorithm}
+
+For monthly observations \(x_t\), let calendar month be \(m(t)\). Compute observed month-specific \[
+\mu_m=\operatorname{mean}\{x_t:m(t)=m\},
+\qquad
+\sigma_m=\operatorname{sd}\{x_t:m(t)=m\},
+\] and standardized values \[
+z_t=(x_t-\mu_{m(t)})/\sigma_{m(t)}.
+\] Let \[
+A_k=|\mathcal F(z-\bar z)_k|
+\] be the target Fourier amplitudes.
+
+Groups are either: - calendar month over the full record; or - calendar month \(\times\) fixed year block.
+
+Initialize \(y\) by random permutation within every group. For each iteration:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  standardize \(y\) with the observed \(\mu_m,\sigma_m\);
+\item
+  retain its Fourier phases and replace amplitudes with \(A_k\);
+\item
+  inverse transform;
+\item
+  within each group, rank the projected scores and assign the exact sorted observed \(x_t\) values of that group.
+\end{enumerate}
+
+This projection alternates at most 12 times. The final groupwise multiset equals the observed multiset exactly. Therefore any fixed threshold preserves the exact event count within every group.
+
+\section{Exact annual IAAFT algorithm}\label{exact-annual-iaaft-algorithm}
+
+The index-level input is the cubic-detrended annual series. Let the sorted observed values be \(z_{(1)},\ldots,z_{(n)}\), and target Fourier amplitudes \(A_k\). Initialize by random permutation. Each iteration:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  replace current Fourier amplitudes by \(A_k\);
+\item
+  inverse transform;
+\item
+  rank-remap to the exact sorted observed detrended values.
+\end{enumerate}
+
+The maximum iteration count is 30. Spectral error is normalized mean squared Fourier-amplitude error.
+
+\section{Ferro--Segers implementation}\label{ferrosegers-implementation}
+
+For exceedance times \(s_j\) over the empirical \(q=0.90\) threshold, set \(T_i=s_{i+1}-s_i\). The exact implementation is \[
+\hat\theta_{\rm raw}
+=
+\frac{2(\sum T_i)^2}{n_T\sum T_i^2}
+\] when \(\max T_i\le2\), and, with \(S_i=T_i-1\), \[
+\hat\theta_{\rm raw}
+=
+\frac{2(\sum S_i)^2}{n_T\sum S_i(S_i-1)}
+\] otherwise. A nonpositive denominator returns one. Frozen tests clip to \([0,1]\).
+
+\section{Seasonal profile}\label{seasonal-profile}
+
+With months \(m=1,\ldots,12\), \[
+p_m(\lambda)
+=
+\operatorname{logit}^{-1}
+\left[
+a_\lambda+\lambda\cos\left(\frac{2\pi(m-8)}{12}\right)
+\right],
+\] and \(a_\lambda\) enforces \(\sum_m p_m=3\).
+
+\begin{longtable}[]{@{}rr@{}}
+\toprule\noalign{}
+\(\lambda\) & \(N_{\mathrm{eff},p}\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0 & 12.000 \\
+0.5 & 11.237 \\
+1 & 9.627 \\
+2 & 6.981 \\
+4 & 4.965 \\
+\end{longtable}
+
+The phase was fixed before confirmatory execution. A preceding 12-phase audit showed that phase changes the magnitude but not the existence of the index/native discrepancy.
+
+\section{Generator details}\label{generator-details}
+
+Gaussian AR(1): \[
+X_t=\phi X_{t-1}+\sqrt{1-\phi^2}\varepsilon_t.
+\]
+
+Periodic-innovation AR(1): \[
+X_t=\phi X_{t-1}+\sigma_{m(t)}\varepsilon_t,\qquad
+\sigma_m=\exp[0.65\cos(2\pi(m-1)/12)].
+\] A 2400-month burn-in was used.
+
+Student-\(t\)-innovation AR(1): \[
+X_t=\phi X_{t-1}+\sqrt{3/5}\,T_5,
+\] with a 2000-month burn-in. Threshold calibration used a deterministic 300,000-point reference series for each \(\phi\).
+
+\section{Confirmatory technical gates}\label{confirmatory-technical-gates}
+
+The confirmatory run passed all fixed integrity gates:
+
+\begin{itemize}
+\tightlist
+\item
+  annual/index spectral error: median 0.001487, p99 0.014648;
+\item
+  native spectral error: median 0.002959, p99 0.007250;
+\item
+  exact native total-count conservation: 1.000;
+\item
+  exact native group-count conservation: 1.000;
+\item
+  annual and native valid-\(\theta\) fractions: 1.000;
+\item
+  native primary rejection rate: 0.04659 versus attainable 0.048.
+\end{itemize}
+
+\section{Persistence × concentration interaction}\label{persistence-concentration-interaction}
+
+Pooled index-only discordance decreases with \(\phi\): \[
+0.1040,\ 0.0782,\ 0.0587
+\] for \(\phi=0.2,0.5,0.8\). This pooled ordering is composition-dependent. At \(\lambda=4\), the ordering reverses sufficiently that \(\phi=0.2\) becomes the least discordant persistence level. The manuscript therefore does not infer a monotone persistence mechanism from the pooled summary.
+
+\section{Mechanism injections}\label{mechanism-injections}
+
+Persistent regime: \[
+L_y=0.85L_{y-1}+\sqrt{1-0.85^2}\xi_y.
+\] For each calendar month, exact original values are rank-remapped according to \[
+(1-\kappa)R+\kappa L,
+\qquad
+\kappa\in\{0.2,0.4,0.6,0.8\}.
+\]
+
+History feedback: \[
+H_t=\sum_{\ell=1}^{24}w_\ell I_{t-\ell},
+\qquad
+w_\ell\propto e^{-\ell/6}.
+\] Within calendar month, target scores are \[
+R-\kappa\widetilde H
+\] and remapped to exact original values, repeated for four iterations. The grid is \[
+\kappa\in\{0.25,0.50,0.75,1.00\}.
+\]
+
+\section{Independent-code audit}\label{independent-code-audit}
+
+C1: maximum deterministic \(\hat\theta\) discrepancy \[
+1.11\times10^{-16}.
+\]
+
+C2: exact reaggregation \[
+1697,\ 629,\ 1084,\ 16.
+\]
+
+C3: independent \(B=99\) rerun on 450 trajectories: - index rejection 8.00\%; - native rejection 2.67\%; - index-only 24; - native-only 0.
+
+Post-hoc arithmetic audit on the same 450 trajectories using original confirmatory outputs: - index rejection 10.89\%; - native rejection 3.33\%; - index-only 34; - native-only 0.
+
+The post-hoc subset calculation is used only to explain why C3 was not expected to reproduce the full-ensemble rate.
+
+\section{Raw/clipped estimator diagnostic}\label{rawclipped-estimator-diagnostic}
+
+For the concentrated profile: - median raw annual offset: +0.1261; - median clipped annual offset: +0.0181.
+
+For the oracle profile: - median raw annual offset: +0.0275; - median clipped annual offset: 0.
+
+Thus clipping attenuates rather than generates the positive finite-sample annual offset.
+
+\section{Amazon reconstruction}\label{amazon-reconstruction}
+
+Models: - ACCESS-CM2 - CESM2-WACCM - CanESM5 - INM-CM4-8 - INM-CM5-0 - MIROC6 - MPI-ESM1-2-HR - MPI-ESM1-2-LR
+
+Data: - CMIP6 \texttt{Amon/pr}; - public Pangeo CMIP6 catalog; - historical + SSP1-2.6, SSP2-4.5, SSP5-8.5; - deterministic asset selection, preferring \texttt{r1i1p1f1}, then \texttt{gn}, \texttt{gr}, \texttt{gr1}, \texttt{gr2}; - 1850--2100 joined path per scenario.
+
+Region: - SREX-AMZ mask from \texttt{regionmask}; - unweighted grid-cell mean to reproduce the recovered diagnostic convention; - precipitation converted to mm day\(^{-1}\).
+
+Event: \[
+P<3.3\ {\rm mm\,day^{-1}}.
+\]
+
+Native surrogate: - exact values within calendar-month × 50-year groups; - approximate spectrum of calendar-month-standardized monthly precipitation; - \(B=500\); - annual dry-month count; - cubic detrending; - Ferro--Segers \(q=0.90\).
+
+Model aggregation: - median across the three scenario-specific observed statistics; - synchronized surrogate median across scenarios for each Monte Carlo index; - lower-tail model p-values; - Benjamini--Hochberg correction across eight models.
+
+Grand gate: - at least 6/8 positive \(\Delta\theta\); - aggregate lower-tail p \textless{} 0.05.
+
+Frozen primary result: - positive models: 6/8; - aggregate p: 0.1417; - FDR-significant models: 0.
+
+\section{Scope of the null comparison}\label{scope-of-the-null-comparison}
+
+The manuscript does not claim that every index-resolution null must show the same behavior. The primary comparison is conditional on: - a detrended annual IAAFT marginal-and-spectrum contract; - the constrained monthly IAAFT-like contract described above; - the fixed cubic detrending rule; - the Ferro--Segers \(q=0.90\) statistic; - the finite sample lengths studied.
+
+Alternative parametric count models, block resampling, or other surrogate constraints remain valid topics for future comparison.

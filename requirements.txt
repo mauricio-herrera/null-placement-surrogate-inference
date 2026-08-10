@@ -1,0 +1,13 @@
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+matplotlib>=3.8
+
+# Required only for the public CMIP6/Amazon reconstruction
+xarray>=2024.1
+dask[array]>=2024.1
+gcsfs>=2024.1
+intake>=2.0
+intake-esm>=2024.1
+regionmask>=0.12
+zarr>=2.17
