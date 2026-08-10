@@ -62,7 +62,7 @@ ax.text(0.795, 0.115, "concentration increases", transform=ax.transAxes,
         fontsize=6.8, color="0.35", ha="center")
 ax.legend(loc="upper left", handlelength=1.6, borderaxespad=0.4)
 
-fig.savefig(OUT / "fig2_seasonal_concentration.pdf", bbox_inches="tight")
+fig.savefig(OUT / "fig2_seasonal_concentration.pdf", bbox_inches="tight", metadata={"CreationDate": None, "ModDate": None})
 fig.savefig(OUT / "fig2_seasonal_concentration.png", dpi=600, bbox_inches="tight")
 plt.close(fig)
 print("fig2 ok")
@@ -125,7 +125,7 @@ axT.text(0.012, 0.965, "(a)", transform=axT.transAxes, fontsize=9.5,
 axB.text(0.012, 0.93, "(b)", transform=axB.transAxes, fontsize=9.5,
          fontweight="bold", va="top")
 
-fig.savefig(OUT / "fig3_probability_equalization.pdf", bbox_inches="tight")
+fig.savefig(OUT / "fig3_probability_equalization.pdf", bbox_inches="tight", metadata={"CreationDate": None, "ModDate": None})
 fig.savefig(OUT / "fig3_probability_equalization.png", dpi=600, bbox_inches="tight")
 plt.close(fig)
 print("fig3 ok")
@@ -162,7 +162,7 @@ ax.set_xlim(-0.04, 1.06)
 ax.set_ylim(0, 58)
 ax.legend(loc="upper left", handlelength=1.7, borderaxespad=0.4)
 
-fig.savefig(OUT / "fig4_mechanism_specific_power.pdf", bbox_inches="tight")
+fig.savefig(OUT / "fig4_mechanism_specific_power.pdf", bbox_inches="tight", metadata={"CreationDate": None, "ModDate": None})
 fig.savefig(OUT / "fig4_mechanism_specific_power.png", dpi=600, bbox_inches="tight")
 plt.close(fig)
 print("fig4 ok")

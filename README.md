@@ -121,8 +121,16 @@ Mechanism-specific sensitivity:
 
 ## Integrity
 
-`FILE_MANIFEST.csv` lists all archived files and sizes.  
-`SHA256SUMS.txt` contains SHA256 hashes for the archived repository contents.
+`FILE_MANIFEST.csv` lists all archived scientific files and sizes, excluding the two integrity files themselves.  
+`SHA256SUMS.txt` contains SHA256 hashes for the archived repository contents and for `FILE_MANIFEST.csv`.
+
+After intentionally changing any archived file, rebuild the integrity records with:
+
+```bash
+python scripts/build_integrity_files.py
+```
+
+The PDF figure scripts suppress creation/modification timestamps in PDF metadata so repeated figure generation is byte-reproducible on the same plotting stack.
 
 ## License
 

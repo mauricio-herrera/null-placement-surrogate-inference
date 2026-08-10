@@ -144,7 +144,7 @@ axC.text(60, 0.5, r"$68{:}1$", fontsize=11.5, ha="center", va="center",
          color="0.15",
          bbox=dict(boxstyle="round,pad=0.28", fc="white", ec="0.55", lw=0.7))
 
-fig.savefig(OUT / "fig1_null_placement_discordance.pdf", bbox_inches="tight")
+fig.savefig(OUT / "fig1_null_placement_discordance.pdf", bbox_inches="tight", metadata={"CreationDate": None, "ModDate": None})
 fig.savefig(OUT / "fig1_null_placement_discordance.png", dpi=600, bbox_inches="tight")
 plt.close(fig)
 print("fig1 ok")
