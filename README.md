@@ -7,6 +7,7 @@
 Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile  
 ORCID: 0000-0002-9604-3077  
 Contact: mherrera@udd.cl
+Zenodo v1.0.0 DOI: 10.5281/zenodo.21873328
 
 ## Scope
 
@@ -136,3 +137,7 @@ The PDF figure scripts suppress creation/modification timestamps in PDF metadata
 
 Code is released under the MIT License. Source datasets accessed from CMIP6/Pangeo
 retain their original licenses and terms.
+
+
+
+
