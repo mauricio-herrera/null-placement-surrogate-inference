@@ -1,6 +1,6 @@
 {
-  "title": "Where the null is imposed matters: surrogate inference after thresholding and temporal aggregation - reproducibility package",
-  "description": "Fixed protocols, analysis scripts, row-level and summary outputs, independent-code audit, CMIP6 Amazon reconstruction workflow, figure source data, and final figure-generation scripts supporting a methodological study of surrogate-null placement before versus after thresholding and temporal aggregation.",
+  "title": "Surrogate inference for threshold-derived environmental indices depends on null placement and seasonal event concentration - reproducibility package",
+  "description": "Versioned reproducibility package supporting the SERRA submission. It contains the frozen protocols, analysis scripts, row-level and summary outputs, independent-code audit, CMIP6 Amazon reconstruction workflow, figure source data, and figure-generation scripts used to study surrogate-null placement before versus after threshold-based index construction. Version 1.1.0 updates manuscript-facing metadata and environmental framing; the confirmatory protocols and numerical scientific results are unchanged from v1.0.0.",
   "creators": [
     {
       "name": "Herrera-Marín, Mauricio",
@@ -10,17 +10,17 @@
   ],
   "keywords": [
     "surrogate data",
-    "threshold processes",
+    "environmental indices",
+    "threshold exceedances",
     "temporal aggregation",
-    "coarse graining",
-    "extremal clustering",
+    "hydroclimatic extremes",
+    "seasonal event probability",
     "percentile thresholds",
-    "climate extremes",
     "constrained randomization",
     "CMIP6"
   ],
-  "version": "1.0.0",
-  "publication_date": "2026-08-10",
+  "version": "1.1.0",
+  "publication_date": "2026-08-12",
   "upload_type": "software",
   "access_right": "open",
   "license": "mit"
