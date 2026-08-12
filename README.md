@@ -1,25 +1,28 @@
-# Where the null is imposed matters
+# Surrogate inference for threshold-derived environmental indices
 ## Reproducibility package
 
-**Manuscript:** *Where the null is imposed matters: surrogate inference after thresholding and temporal aggregation*
+**Current manuscript:** *Surrogate inference for threshold-derived environmental indices depends on null placement and seasonal event concentration*
 
 **Author:** Mauricio Herrera-Marín  
 Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile  
 ORCID: 0000-0002-9604-3077  
 Contact: mherrera@udd.cl
-Zenodo v1.0.0 DOI: 10.5281/zenodo.21873328
+
+**Archived releases:** v1.0.0 DOI: 10.5281/zenodo.21873328. Version v1.1.0 updates the manuscript-facing metadata for the SERRA submission while preserving the frozen protocols, numerical outputs, and scientific results of v1.0.0.
 
 ## Scope
 
 This repository contains the fixed computational protocols, synthetic-analysis scripts,
 row-level and summary outputs, independent implementation audit, final manuscript
 figure data and plotting scripts, and the public-CMIP6 reconstruction workflow used
-for the Amazon illustration.
+for the Amazon dry-month case study.
 
 Raw CMIP6 files are not redistributed.
 
 The confirmatory computational program was closed before manuscript finalization:
 no additional lambda/kappa grid points or post-result tuning are part of the reported evidence.
+The journal retargeting from the original PRE submission to SERRA changes the framing and
+metadata, not the frozen confirmatory evidence.
 
 ## Repository structure
 
@@ -37,6 +40,11 @@ no additional lambda/kappa grid points or post-result tuning are part of the rep
 - `figures/` — final manuscript figures.
 - `supplementary/` — Supplemental Material source.
 - `STAGE5C_SELECTION_V060.csv` — frozen independent-audit selection.
+
+## Version history
+
+- **v1.1.0 — SERRA submission metadata release.** Updates the manuscript title, environmental-index framing, citation metadata, and release documentation. The frozen protocols, analysis scripts, row-level scientific outputs, figure source data, and headline numerical results are unchanged from v1.0.0.
+- **v1.0.0 — original reproducibility release.** Archived at Zenodo DOI `10.5281/zenodo.21873328`.
 
 ## Python environment
 
@@ -88,7 +96,7 @@ python scripts/synthetic/05_stage5C_independent_audit_v060.py \
 
 ## Amazon / CMIP6 reconstruction
 
-Raw CMIP6 data are not included. To reconstruct the climate illustration from the
+Raw CMIP6 data are not included. To reconstruct the climate case study from the
 public Pangeo CMIP6 catalog:
 
 ```bash
@@ -118,7 +126,11 @@ Probability equalization:
 
 Mechanism-specific sensitivity:
 - strongest prespecified history-feedback alternative:
-  30.7% detection rate (95% Wilson CI 23.8%–38.5%).
+  30.7% detection rate (95% Wilson CI 23.8%–38.5%) under the fixed synthetic gate.
+
+CMIP6 Amazon case study:
+- eight CMIP6 models, with scenario paths aggregated within model;
+- aggregate native-resolution gate: p = 0.1417 (non-discriminating).
 
 ## Integrity
 
@@ -137,7 +149,3 @@ The PDF figure scripts suppress creation/modification timestamps in PDF metadata
 
 Code is released under the MIT License. Source datasets accessed from CMIP6/Pangeo
 retain their original licenses and terms.
-
-
-
-
