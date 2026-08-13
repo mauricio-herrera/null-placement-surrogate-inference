@@ -1,0 +1,59 @@
+name: Finalize SERRA v1.1.0 metadata
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/finalize-serra-v1.1.0.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Record DOI and rebuild integrity files
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          doi = '10.5281/zenodo.21910629'
+
+          p = Path('README.md')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace(
+              '**Archived releases:** v1.0.0 DOI: 10.5281/zenodo.21873328. Version v1.1.0 updates the manuscript-facing metadata for the SERRA submission while preserving the frozen protocols, numerical outputs, and scientific results of v1.0.0.',
+              '**Archived releases:** v1.1.0 DOI: 10.5281/zenodo.21910629 (current SERRA submission release); v1.0.0 DOI: 10.5281/zenodo.21873328. Version v1.1.0 updates the manuscript-facing metadata for the SERRA submission while preserving the frozen protocols, numerical outputs, and scientific results of v1.0.0.'
+          )
+          s = s.replace(
+              '- **v1.1.0 — SERRA submission metadata release.** Updates the manuscript title, environmental-index framing, citation metadata, and release documentation. The frozen protocols, analysis scripts, row-level scientific outputs, figure source data, and headline numerical results are unchanged from v1.0.0.',
+              '- **v1.1.0 — SERRA submission metadata release.** Archived at Zenodo DOI `10.5281/zenodo.21910629`. Updates the manuscript title, environmental-index framing, citation metadata, and release documentation. The frozen protocols, analysis scripts, row-level scientific outputs, figure source data, and headline numerical results are unchanged from v1.0.0.'
+          )
+          p.write_text(s, encoding='utf-8')
+
+          p = Path('CITATION.cff')
+          s = p.read_text(encoding='utf-8')
+          if '\ndoi:' not in s:
+              s = s.replace('date-released: 2026-08-12\n', 'date-released: 2026-08-12\ndoi: "10.5281/zenodo.21910629"\n')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+          rm -f .github/workflows/create-serra-v1.1.0-release.yml
+          rm -f .github/workflows/query-zenodo-v1.1.0.yml
+          rm -f .github/workflows/finalize-serra-v1.1.0.yml
+
+          python scripts/build_integrity_files.py
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md CITATION.cff FILE_MANIFEST.csv SHA256SUMS.txt .github/workflows
+          git commit -m 'Record Zenodo v1.1.0 DOI and remove temporary workflows'
+          git push origin HEAD:main
