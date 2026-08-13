@@ -3,6 +3,7 @@ message: "If you use this reproducibility package, please cite the archived rele
 title: "Surrogate inference for threshold-derived environmental indices depends on null placement and seasonal event concentration - reproducibility package"
 version: 1.1.0
 date-released: 2026-08-12
+doi: "10.5281/zenodo.21910629"
 authors:
   - family-names: "Herrera-Marín"
     given-names: "Mauricio"

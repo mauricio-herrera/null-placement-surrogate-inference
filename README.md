@@ -8,7 +8,7 @@ Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile
 ORCID: 0000-0002-9604-3077  
 Contact: mherrera@udd.cl
 
-**Archived releases:** v1.0.0 DOI: 10.5281/zenodo.21873328. Version v1.1.0 updates the manuscript-facing metadata for the SERRA submission while preserving the frozen protocols, numerical outputs, and scientific results of v1.0.0.
+**Archived releases:** v1.1.0 DOI: 10.5281/zenodo.21910629 (current SERRA submission release); v1.0.0 DOI: 10.5281/zenodo.21873328. Version v1.1.0 updates the manuscript-facing metadata for the SERRA submission while preserving the frozen protocols, numerical outputs, and scientific results of v1.0.0.
 
 ## Scope
 
@@ -43,7 +43,7 @@ metadata, not the frozen confirmatory evidence.
 
 ## Version history
 
-- **v1.1.0 — SERRA submission metadata release.** Updates the manuscript title, environmental-index framing, citation metadata, and release documentation. The frozen protocols, analysis scripts, row-level scientific outputs, figure source data, and headline numerical results are unchanged from v1.0.0.
+- **v1.1.0 — SERRA submission metadata release.** Archived at Zenodo DOI `10.5281/zenodo.21910629`. Updates the manuscript title, environmental-index framing, citation metadata, and release documentation. The frozen protocols, analysis scripts, row-level scientific outputs, figure source data, and headline numerical results are unchanged from v1.0.0.
 - **v1.0.0 — original reproducibility release.** Archived at Zenodo DOI `10.5281/zenodo.21873328`.
 
 ## Python environment
