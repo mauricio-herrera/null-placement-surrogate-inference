@@ -1,6 +1,6 @@
 {
-  "title": "Surrogate inference for threshold-derived environmental indices depends on null placement and seasonal event concentration - reproducibility package",
-  "description": "Versioned reproducibility package supporting the SERRA submission. It contains the frozen protocols, analysis scripts, row-level and summary outputs, independent-code audit, CMIP6 Amazon reconstruction workflow, figure source data, and figure-generation scripts used to study surrogate-null placement before versus after threshold-based index construction. Version 1.1.0 updates manuscript-facing metadata and environmental framing; the confirmatory protocols and numerical scientific results are unchanged from v1.0.0.",
+  "title": "Null transport under temporal coarse-graining: lumpability and surrogate inference for threshold-derived time series - reproducibility package",
+  "description": "Version 2.0.0 reproducibility package supporting the manuscript 'Null transport under temporal coarse-graining: lumpability and surrogate inference for threshold-derived time series'. This release adds the null-transport and lumpability formalism, Gaussian and operator-ablation diagnostics, within-fiber tests of lumpability, and a prospectively frozen application to 31 Chilean PM2.5 monitoring stations from SINCA. It includes the frozen SINCA cohort and inferential protocol, the analysis-ready 2018-2025 PM2.5 extract, station-level outputs, probability-equalization and missingness sensitivities, manuscript sources, figures, and executable analysis scripts. The original confirmatory synthetic evidence is retained. The former Amazon-CMIP6 illustration is no longer part of the manuscript.",
   "creators": [
     {
       "name": "Herrera-Marín, Mauricio",
@@ -9,18 +9,19 @@
     }
   ],
   "keywords": [
+    "null transport",
+    "lumpability",
     "surrogate data",
-    "environmental indices",
+    "coarse-graining",
     "threshold exceedances",
     "temporal aggregation",
-    "hydroclimatic extremes",
-    "seasonal event probability",
-    "percentile thresholds",
-    "constrained randomization",
-    "CMIP6"
+    "extremal clustering",
+    "PM2.5",
+    "air pollution",
+    "SINCA"
   ],
-  "version": "1.1.0",
-  "publication_date": "2026-08-12",
+  "version": "2.0.0",
+  "publication_date": "2026-09-11",
   "upload_type": "software",
   "access_right": "open",
   "license": "mit"

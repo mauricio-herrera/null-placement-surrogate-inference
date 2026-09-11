@@ -1,0 +1,24 @@
+{
+  "seed": 20260910,
+  "reps_per_phi": 30,
+  "B": 249,
+  "phi_values": [
+    0.2,
+    0.5,
+    0.8
+  ],
+  "lambda_values": [
+    0.0,
+    4.0
+  ],
+  "Neff": {
+    "0.0": 12.000000000000002,
+    "4.0": 4.96458390561927
+  },
+  "years_simulated": 252,
+  "years_analyzed": 251,
+  "native_iterations": 12,
+  "elapsed_seconds": 242.5330617427826,
+  "construction": "Permute exact x values within each calendar-month x threshold-indicator class. Preserves indicator sequence and each calendar-month empirical multiset exactly; changes target standardized monthly spectrum.",
+  "interpretation": "If fiber-pair pushforward feature distributions differ beyond same-x independent-ensemble Monte Carlo baseline, this falsifies strong lumpability for the implemented native kernel with respect to the threshold+annual-count operator (and deterministic cubic detrending)."
+}

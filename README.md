@@ -1,151 +1,35 @@
-# Surrogate inference for threshold-derived environmental indices
-## Reproducibility package
+# Null transport under temporal coarse-graining
+## Reproducibility package — v2.0.0
 
-**Current manuscript:** *Surrogate inference for threshold-derived environmental indices depends on null placement and seasonal event concentration*
+This package contains the submission-oriented manuscript reconstruction after replacing the former CMIP6 Amazon illustration with a prospectively frozen SINCA PM2.5 application.
 
-**Author:** Mauricio Herrera-Marín  
-Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile  
-ORCID: 0000-0002-9604-3077  
-Contact: mherrera@udd.cl
 
-**Archived releases:** v1.1.0 DOI: 10.5281/zenodo.21910629 (current SERRA submission release); v1.0.0 DOI: 10.5281/zenodo.21873328. Version v1.1.0 updates the manuscript-facing metadata for the SERRA submission while preserving the frozen protocols, numerical outputs, and scientific results of v1.0.0.
+## Archived releases
 
-## Scope
+- **v2.0.0** — null transport, lumpability, mechanism diagnostics, and prospectively frozen SINCA PM2.5 application.
+- **v1.1.0** — SERRA metadata release; DOI `10.5281/zenodo.21910629`.
+- **v1.0.0** — original reproducibility release; DOI `10.5281/zenodo.21873328`.
 
-This repository contains the fixed computational protocols, synthetic-analysis scripts,
-row-level and summary outputs, independent implementation audit, final manuscript
-figure data and plotting scripts, and the public-CMIP6 reconstruction workflow used
-for the Amazon dry-month case study.
+## Core deliverables
 
-Raw CMIP6 files are not redistributed.
+- `manuscript_final.pdf` / `manuscript_final.tex`
+- `body_final.tex`
+- `Supplementary_Material_Final.pdf` / `.tex`
+- `references_final.bib` and compiled `references_final.bbl`
+- publication figures in `figures/`
 
-The confirmatory computational program was closed before manuscript finalization:
-no additional lambda/kappa grid points or post-result tuning are part of the reported evidence.
-The journal retargeting from the original PRE submission to SERRA changes the framing and
-metadata, not the frozen confirmatory evidence.
+## Main scientific changes relative to the previous reconstruction
 
-## Repository structure
+1. Added the 31-station SINCA PM2.5 application, with cohort and inferential protocol frozen before application-level surrogate outputs were inspected.
+2. Under the fixed 50 µg m^-3 event threshold, the primary Ferro-Segers analysis gives 29 index-only, 0 native-only, and 2 joint rejections; the region sign-flip p-value is 0.003906.
+3. Probability equalization reduces index-only decisions from 29 to 5 and reduces the index-minus-native null-center gap at all 31 stations.
+4. The prespecified SINCA null-width-contraction prediction is reported as not supported (rho=-0.379; region-bootstrap 95% CI [-0.624, 0.136]).
+5. The mechanism is therefore framed as full projected-null distributional distortion, not universal variance contraction.
+6. The exposure-standardized missingness sensitivity was completed: among 22 technically defined stations, 22 index-level vs 1 native rejection (21 index-only, 1 both).
+7. The non-discriminating Amazon-CMIP6 illustration has been removed from the final manuscript and supplement.
 
-- `scripts/synthetic/` — mechanism audit, confirmatory experiment, sensitivity experiment,
-  probability-equalization experiment, and independent implementation audit.
-- `scripts/figures/` — final scripts used to generate the four main manuscript figures.
-- `scripts/amazon/` — public Pangeo CMIP6 Amazon reconstruction and provenance audit.
-- `protocols/` — protocols fixed before the corresponding scientific runs.
-- `freeze_hashes/` — SHA256 records of the frozen confirmatory packages.
-- `results/stage3/` — 13,500-trajectory confirmatory outputs.
-- `results/stage4/` — mechanism-specific eight-unit sensitivity outputs.
-- `results/stage5/` — probability-equalization and estimator-diagnostic outputs.
-- `results/stage5C/` — independent implementation audit.
-- `data/figure_data/` — CSV tables used by the final figure scripts.
-- `figures/` — final manuscript figures.
-- `supplementary/` — Supplemental Material source.
-- `STAGE5C_SELECTION_V060.csv` — frozen independent-audit selection.
+## Reproducibility
 
-## Version history
+`reproducibility/SINCA/` contains the frozen cohort, protocol, machine-readable manifest, analysis-ready input, station-level results, probability-equalization results, exposure sensitivity, and executable scripts. The synthetic/within-fiber mechanism diagnostics are under `reproducibility/diagnostics/`.
 
-- **v1.1.0 — SERRA submission metadata release.** Archived at Zenodo DOI `10.5281/zenodo.21910629`. Updates the manuscript title, environmental-index framing, citation metadata, and release documentation. The frozen protocols, analysis scripts, row-level scientific outputs, figure source data, and headline numerical results are unchanged from v1.0.0.
-- **v1.0.0 — original reproducibility release.** Archived at Zenodo DOI `10.5281/zenodo.21873328`.
-
-## Python environment
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-```
-
-## Reproducing the final figures
-
-```bash
-python scripts/figures/make_figure1.py
-python scripts/figures/make_figures234.py
-```
-
-The plotting scripts read the CSV files in `data/figure_data/`. If you run them from
-another directory, preserve the repository structure or adjust the relative data path
-documented in the scripts.
-
-## Re-running the synthetic analyses
-
-These calculations are computationally intensive. Use smoke tests first where supported.
-
-```bash
-python scripts/synthetic/02_stage3_confirmatory_v040.py --smoke --jobs 1 --out smoke_stage3
-python scripts/synthetic/03_stage4_power_v050.py --smoke --jobs 1 --out smoke_stage4
-python scripts/synthetic/04_stage5AB_mitigation_v060.py --smoke --jobs 1 --out smoke_stage5
-```
-
-Full runs:
-
-```bash
-python scripts/synthetic/02_stage3_confirmatory_v040.py --jobs 4 --out stage3_run
-python scripts/synthetic/03_stage4_power_v050.py --jobs 4 --out stage4_run
-python scripts/synthetic/04_stage5AB_mitigation_v060.py --jobs 4 --out stage5_run
-```
-
-Independent closure audit:
-
-```bash
-python scripts/synthetic/05_stage5C_independent_audit_v060.py \
-  --stage3-dir results/stage3 \
-  --selection STAGE5C_SELECTION_V060.csv \
-  --jobs 4 \
-  --out stage5C_run
-```
-
-## Amazon / CMIP6 reconstruction
-
-Raw CMIP6 data are not included. To reconstruct the climate case study from the
-public Pangeo CMIP6 catalog:
-
-```bash
-python scripts/amazon/extract_monthly_amazon_pr_gate_v013.py
-```
-
-See `scripts/amazon/README.md` for the model list, experiments, threshold, regional
-definition, asset-selection rules, and provenance-audit script.
-
-## Headline archived quantities
-
-Confirmatory resolution experiment:
-- 13,500 trajectories.
-- Index-resolution rejections: 1,697.
-- Native-resolution rejections: 629.
-- Index-only discordances: 1,084.
-- Native-only discordances: 16.
-
-Seasonal concentration:
-- index-only discordance: 4.41% at lambda = 0;
-- index-only discordance: 16.22% at lambda = 4.
-
-Probability equalization:
-- concentrated profile: 15.85%;
-- oracle uniform profile: 3.93%;
-- independent 30-year percentile profile: 3.48%.
-
-Mechanism-specific sensitivity:
-- strongest prespecified history-feedback alternative:
-  30.7% detection rate (95% Wilson CI 23.8%–38.5%) under the fixed synthetic gate.
-
-CMIP6 Amazon case study:
-- eight CMIP6 models, with scenario paths aggregated within model;
-- aggregate native-resolution gate: p = 0.1417 (non-discriminating).
-
-## Integrity
-
-`FILE_MANIFEST.csv` lists all archived scientific files and sizes, excluding the two integrity files themselves.  
-`SHA256SUMS.txt` contains SHA256 hashes for the archived repository contents and for `FILE_MANIFEST.csv`.
-
-After intentionally changing any archived file, rebuild the integrity records with:
-
-```bash
-python scripts/build_integrity_files.py
-```
-
-The PDF figure scripts suppress creation/modification timestamps in PDF metadata so repeated figure generation is byte-reproducible on the same plotting stack.
-
-## License
-
-Code is released under the MIT License. Source datasets accessed from CMIP6/Pangeo
-retain their original licenses and terms.
+The PDFs compile with the included `build.sh` without LaTeX warnings or overfull/underfull box warnings in the current environment.

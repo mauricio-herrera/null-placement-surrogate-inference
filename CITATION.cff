@@ -1,9 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this reproducibility package, please cite the archived release."
-title: "Surrogate inference for threshold-derived environmental indices depends on null placement and seasonal event concentration - reproducibility package"
-version: 1.1.0
-date-released: 2026-08-12
-doi: "10.5281/zenodo.21910629"
+title: "Null transport under temporal coarse-graining: lumpability and surrogate inference for threshold-derived time series - reproducibility package"
+version: 2.0.0
+date-released: 2026-09-11
 authors:
   - family-names: "Herrera-Marín"
     given-names: "Mauricio"
@@ -11,12 +10,15 @@ authors:
     email: "mherrera@udd.cl"
     affiliation: "Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile"
 keywords:
+  - null transport
+  - lumpability
   - surrogate data
-  - environmental indices
+  - coarse-graining
   - threshold exceedances
   - temporal aggregation
-  - hydroclimatic extremes
-  - seasonal event probability
-  - constrained randomization
+  - extremal clustering
+  - PM2.5
+  - air pollution
+  - SINCA
 license: MIT
 repository-code: "https://github.com/mauricio-herrera/null-placement-surrogate-inference"

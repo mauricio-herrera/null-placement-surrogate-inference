@@ -1,0 +1,81 @@
+{
+  "freeze_id": "SINCA_PM25_AOAS_FROZEN_COHORT_V1",
+  "created_utc": "2026-09-11T14:37:26.955016+00:00",
+  "status": "FROZEN",
+  "purpose": "Primary station cohort freeze before any SINCA surrogate/null-transport inference.",
+  "analysis_window": {
+    "start": "2018-01-01",
+    "end": "2025-12-31"
+  },
+  "pollutant": "PM2.5",
+  "event_threshold_for_selection_diagnostics": "> 50",
+  "primary_station_count": 31,
+  "station_id_definition": "Unique AtmChile/SINCA catalog cod",
+  "station_ids_sorted": [
+    "RIX/901",
+    "RIX/902",
+    "RIX/905",
+    "RM/D12",
+    "RM/D14",
+    "RM/D15",
+    "RM/D18",
+    "RM/D30",
+    "RVI/609",
+    "RVI/611",
+    "RVI/615",
+    "RVII/709",
+    "RVII/711",
+    "RVIII/802",
+    "RVIII/804",
+    "RVIII/806",
+    "RVIII/810",
+    "RVIII/832",
+    "RVIII/837",
+    "RVIII/841",
+    "RVIII/854",
+    "RVIII/873",
+    "RVIII/874",
+    "RVIII/875",
+    "RX/A01",
+    "RX/A07",
+    "RX/A08",
+    "RXI/B03",
+    "RXI/B04",
+    "RXI/B05",
+    "RXIV/E04"
+  ],
+  "station_list_sha256": "59b019cd344b1cdf9c0f6fb90b381ad12d416d72461d94d31d6ce0039ff010e6",
+  "eligibility_rule": {
+    "short_code_maps_to_unique_catalog_station": true,
+    "daily_coverage_2018_2025_min": 0.95,
+    "fraction_of_417_complete_Monday_Sunday_weeks_with_at_least_6_observed_days_min": 0.95,
+    "observed_pm25_days_above_50_min": 100,
+    "diagnostic_bad_range_fraction_max": 0.001,
+    "diagnostic_bad_range": "PM2.5 < 0 or PM2.5 > 500",
+    "recent_gross_scale_shift_flag": false
+  },
+  "frozen_summary": {
+    "n_regions": 8,
+    "total_exceedance_days_gt50": 10738,
+    "neff_min": 3.3975485931008214,
+    "neff_median": 4.296592620779175,
+    "neff_max": 5.672571500304316,
+    "min_daily_coverage": 0.9736481861738536,
+    "min_week_ge6_fraction": 0.9640287769784172,
+    "min_full_week_fraction": 0.9544364508393284
+  },
+  "not_yet_frozen": [
+    "Treatment of 6/7-day weeks in the inferential weekly series",
+    "Any imputation rule",
+    "Final applied statistic(s)",
+    "Exact SINCA native-resolution surrogate contract",
+    "Exact weekly/index-resolution surrogate contract",
+    "Multiplicity/aggregation rule across the 31 stations"
+  ],
+  "source_file_hashes": {
+    "ab345255-bb2d-48be-99c4-c024336bcb14.parquet": "d5b4eaf18d32b035e2bf668611b4d343edeced214ae380cfda2133a15c386fd3",
+    "atmchile_station_catalog.csv": "f9774d91589339bd1f75deb1e36a1cc28f14ea601d8b1dc7672aeb3edc097164",
+    "sinca_pm25_strict_cohort_2018_2025.csv": "b7d6f457d2225cabb2fa19143742b826dd9c7b660a7d85c4ed13f22595f9a056"
+  },
+  "provenance_note": "The 31-row eligibility table was created from the supplied PM2.5 parquet and station catalog before any station-level surrogate results were evaluated."
+}

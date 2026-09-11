@@ -1,0 +1,336 @@
+% ------------------------------------------------------------------
+% Proposed analytical section: null transport and kernel lumpability
+% Intended to be inserted after the current native/index-resolution paths.
+% Requires: \usepackage{amsthm}
+% Suggested theorem declarations in preamble:
+% \newtheorem{proposition}{Proposition}
+% \newtheorem{corollary}{Corollary}
+% \theoremstyle{definition}\newtheorem{definition}{Definition}
+% \theoremstyle{remark}\newtheorem{remark}{Remark}
+% ------------------------------------------------------------------
+
+\subsection{Null transport and kernel lumpability}\label{null-transport-lumpability}
+
+Let $(\mathsf X,\mathcal A)$ denote the native-resolution trajectory space and
+$(\mathsf Y,\mathcal B)$ a derived-data space.  Let
+\[
+\mathcal G:\mathsf X\to\mathsf Y
+\]
+be a deterministic preprocessing map.  In the main application,
+$\mathcal G=\mathcal P=D\circ\mathcal O$; when isolating thresholding and
+aggregation, we take $\mathcal G=\mathcal O$.  A native-resolution surrogate
+procedure is represented by a Markov kernel $K_X(x,dx^\star)$ on $\mathsf X$.
+For an observed native trajectory $x$, define its \emph{transported native
+null} on the derived space by
+\begin{equation}
+L_x(B)
+:=K_X\!\left(x,\mathcal G^{-1}(B)\right),
+\qquad B\in\mathcal B.
+\label{eq:transported-native-null}
+\end{equation}
+Thus $L_x=\mathcal G_\#K_X(x,\cdot)$ is the law of
+$\mathcal G(X^\star)$ when $X^\star\sim K_X(x,\cdot)$.
+
+\begin{definition}[Strong $\mathcal G$-lumpability of a surrogate kernel]
+The native kernel $K_X$ is strongly $\mathcal G$-lumpable if
+\begin{equation}
+L_x=L_{x'}
+\qquad\text{whenever}\qquad
+\mathcal G(x)=\mathcal G(x').
+\label{eq:strong-G-lumpability}
+\end{equation}
+Equivalently, the transported null depends on the native trajectory only
+through the derived observation $y=\mathcal G(x)$.
+\end{definition}
+
+This is lumpability of the \emph{randomization kernel}, not a claim that the
+physical climate process itself is a lumpable Markov chain.  In a finite
+state space, Eq.~\eqref{eq:strong-G-lumpability} reduces to the classical
+Kemeny--Snell block-transition criterion.
+
+\begin{proposition}[Quotient-null criterion]\label{prop:quotient-null}
+Equip $\mathsf Y=\mathcal G(\mathsf X)$ with the quotient sigma-algebra induced
+by $\mathcal G$.  The following are equivalent.
+\begin{enumerate}
+\item $K_X$ is strongly $\mathcal G$-lumpable.
+\item There exists a Markov kernel $\bar K_Y$ on $\mathsf Y$ such that
+\begin{equation}
+\mathcal G_\#K_X(x,\cdot)
+=\bar K_Y(\mathcal Gx,\cdot)
+\qquad\text{for every }x\in\mathsf X.
+\label{eq:quotient-kernel}
+\end{equation}
+\end{enumerate}
+On $\mathcal G(\mathsf X)$ the kernel $\bar K_Y$ is unique.
+\end{proposition}
+
+\begin{proof}
+If (2) holds and $\mathcal Gx=\mathcal Gx'$, both transported laws equal
+$\bar K_Y(\mathcal Gx,\cdot)$, proving (1).  Conversely, if (1) holds, define
+$\bar K_Y(y,B)=L_x(B)$ for any $x\in\mathcal G^{-1}(\{y\})$.  Condition
+\eqref{eq:strong-G-lumpability} makes this definition independent of the
+representative $x$; measurability follows from the quotient sigma-algebra.
+Uniqueness on the image of $\mathcal G$ is immediate.
+\end{proof}
+
+Proposition~\ref{prop:quotient-null} separates two questions that are distinct
+in surrogate inference.  First, does a derived-space null exist that exactly
+represents the native randomization after preprocessing?  Second, if it does,
+is the chosen index-level surrogate kernel $K_Y$ equal to that quotient
+kernel?  The first is a lumpability question; the second is a surrogate-contract
+question.
+
+\subsection{A null-transport defect and an unavoidable-error bound}
+
+For $y\in\mathsf Y$, write
+$\mathcal F_y=\{x\in\mathsf X:\mathcal Gx=y\}$ for the fiber over $y$ and define
+its total-variation transport diameter by
+\begin{equation}
+\Delta_L(y)
+:=\sup_{x,x'\in\mathcal F_y}
+ d_{\mathrm{TV}}(L_x,L_{x'}).
+\label{eq:lumpability-defect}
+\end{equation}
+Then $\Delta_L(y)=0$ for every $y$ if and only if $K_X$ is strongly
+$\mathcal G$-lumpable.
+
+\begin{proposition}[Unavoidable error of an aggregate-only null]
+\label{prop:half-diameter}
+Let $Q_Y(y,\cdot)$ be any null kernel that has access only to the derived
+observation $y$.  For every fiber,
+\begin{equation}
+\sup_{x\in\mathcal F_y}
+ d_{\mathrm{TV}}\!\left(L_x,Q_Y(y,\cdot)\right)
+\ge \frac{1}{2}\Delta_L(y).
+\label{eq:half-diameter-bound}
+\end{equation}
+Consequently, if $\Delta_L(y)>0$, no aggregate-only null can reproduce the
+native transported null uniformly over that fiber.
+\end{proposition}
+
+\begin{proof}
+For any $x,x'\in\mathcal F_y$, the triangle inequality gives
+\[
+d_{\mathrm{TV}}(L_x,L_{x'})
+\le d_{\mathrm{TV}}(L_x,Q_Y(y,\cdot))
++d_{\mathrm{TV}}(Q_Y(y,\cdot),L_{x'}).
+\]
+At least one term on the right is therefore at least half the left-hand side.
+Taking the supremum over $x,x'$ proves Eq.~\eqref{eq:half-diameter-bound}.
+\end{proof}
+
+This result gives an operational meaning to failure of lumpability.  If the
+native null uses microstate information that $\mathcal G$ removes, then the
+aggregate observation alone does not identify a unique transported null.
+
+\begin{corollary}[Projection to a statistic]\label{cor:statistic-projection}
+Let $T:\mathsf Y\to\mathsf Z$ be any measurable statistic.  Then
+\begin{equation}
+d_{\mathrm{TV}}(T_\#L_x,T_\#L_{x'})
+\le d_{\mathrm{TV}}(L_x,L_{x'}).
+\label{eq:data-processing-TV}
+\end{equation}
+For any rejection set $R\subseteq\mathsf Z$,
+\begin{equation}
+\left|
+L_x\{T\in R\}-L_{x'}\{T\in R\}
+\right|
+\le d_{\mathrm{TV}}(T_\#L_x,T_\#L_{x'}).
+\label{eq:decision-bound}
+\end{equation}
+Thus kernel non-lumpability can be invisible to a particular statistic, while
+a difference in a statistic-level null distribution is a direct witness of
+kernel-level non-lumpability.
+\end{corollary}
+
+\begin{proof}
+Equation~\eqref{eq:data-processing-TV} is the data-processing inequality for
+total variation under a measurable map.  Equation~\eqref{eq:decision-bound}
+follows from the definition of total variation.
+\end{proof}
+
+\subsection{Model-dependent transport when strong lumpability fails}
+
+Strong lumpability is sufficient for a unique quotient null, but it need not
+hold.  Suppose a benchmark null model $P_0$ on $\mathsf X$ admits a regular
+conditional distribution $\mu_y(dx)=P_0(dx\mid \mathcal G(X)=y)$.  Define
+\begin{equation}
+\bar K_{P_0}(y,B)
+:=\int_{\mathcal F_y} L_x(B)\,\mu_y(dx).
+\label{eq:model-dependent-transport}
+\end{equation}
+
+\begin{proposition}[Model-dependent transported null]
+\label{prop:model-dependent-transport}
+If $X\sim P_0$ and $X^\star\mid X\sim K_X(X,\cdot)$, then
+\begin{equation}
+\Pr\{\mathcal G(X^\star)\in B\mid \mathcal G(X)=y\}
+=\bar K_{P_0}(y,B).
+\label{eq:conditional-transport}
+\end{equation}
+If $K_X$ is strongly $\mathcal G$-lumpable, then
+$\bar K_{P_0}=\bar K_Y$ for every $P_0$.  If strong lumpability fails, the
+transported null can depend on how $P_0$ distributes unresolved microstates
+within the fiber $\mathcal F_y$.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:conditional-transport} follows from the tower property:
+conditional on $X=x$, the probability of
+$\mathcal G(X^\star)\in B$ is $L_x(B)$; averaging this quantity over
+$P_0(dx\mid \mathcal G(X)=y)$ yields Eq.~\eqref{eq:model-dependent-transport}.
+Under strong lumpability, $L_x$ is constant on each fiber, so the integral is
+independent of $\mu_y$ and equals the quotient kernel from
+Proposition~\ref{prop:quotient-null}.
+\end{proof}
+
+\subsection{Minimal spectral-surrogate counterexample}\label{spectral-counterexample}
+
+The following finite example isolates the structural obstruction relevant to
+marginal-and-spectrum surrogates.  It is not an analytical representation of
+IAAFT itself; rather, it is a minimal exactly solvable surrogate kernel that
+preserves the empirical marginal and softly matches a spectral feature.
+
+Let
+\[
+\Omega=\{z\in\{0,1\}^4:\;z_1+z_2+z_3+z_4=2\},
+\]
+so every state has exactly two event and two non-event values.  Interpret the
+four coordinates as two consecutive two-period blocks and define the block-count
+coarse-graining
+\begin{equation}
+\mathcal O(z)=(z_1+z_2,\;z_3+z_4).
+\label{eq:toy-O}
+\end{equation}
+For $\bar z=1/2$, define the centered circular lag-one score
+\begin{equation}
+R(z)=\sum_{t=1}^{4}(z_t-\bar z)(z_{t+1}-\bar z),
+\qquad z_5=z_1.
+\label{eq:toy-R}
+\end{equation}
+With the discrete Fourier transform convention
+$\widehat z_k=\sum_{t=0}^{3}(z_{t+1}-\bar z)e^{-2\pi i kt/4}$,
+\[
+R(z)=\frac{1}{4}\sum_{k=0}^{3}|\widehat z_k|^2
+\cos(2\pi k/4),
+\]
+so $R$ is a linear functional of Fourier power.
+
+For $\tau\ge0$, define the spectral-tilted permutation kernel
+\begin{equation}
+K_\tau(x,z)
+=
+\frac{\exp\{-\tau[R(z)-R(x)]^2\}}
+{\sum_{w\in\Omega}\exp\{-\tau[R(w)-R(x)]^2\}},
+\qquad z\in\Omega.
+\label{eq:toy-kernel}
+\end{equation}
+All outputs have the same empirical marginal as the input.  At $\tau=0$ the
+kernel is uniform over all permutations; increasing $\tau$ increasingly favors
+permutations whose lag-one spectral score matches that of the observed
+microstate.
+
+\begin{proposition}[Spectral conditioning can destroy lumpability]
+\label{prop:toy-counterexample}
+For the block-count map \eqref{eq:toy-O}, $K_0$ is strongly
+$\mathcal O$-lumpable, whereas $K_\tau$ is not strongly
+$\mathcal O$-lumpable for every $\tau>0$.
+
+More explicitly, take
+\[
+x=(0,1,1,0),
+\qquad
+x'=(1,0,1,0).
+\]
+Then
+\[
+\mathcal O(x)=\mathcal O(x')=(1,1),
+\qquad
+R(x)=0,
+\qquad
+R(x')=-1.
+\]
+Writing $q=e^{-\tau}$, the total-variation distance between the two transported
+block-count nulls is
+\begin{equation}
+ d_{\mathrm{TV}}
+ \left(
+ \mathcal O_\#K_\tau(x,\cdot),
+ \mathcal O_\#K_\tau(x',\cdot)
+ \right)
+ =
+ \frac{1-q^2}{2q^2+5q+2}
+ >0
+ \qquad (\tau>0).
+\label{eq:toy-TV}
+\end{equation}
+It increases from $0$ at $\tau=0$ to $1/2$ as $\tau\to\infty$.
+\end{proposition}
+
+\begin{proof}
+Among the six elements of $\Omega$, four have $R=0$,
+\[
+0011,\;0110,\;1001,\;1100,
+\]
+and two have $R=-1$,
+\[
+0101,\;1010.
+\]
+The possible block-count values are $(2,0)$, $(1,1)$, and $(0,2)$.  For the
+microstate $x$, whose target score is $0$, the transported distribution is
+\begin{equation}
+L_x
+=
+\frac{1}{4+2q}
+\left(1,\;2+2q,\;1\right),
+\label{eq:toy-Lx}
+\end{equation}
+whereas for $x'$, whose target score is $-1$,
+\begin{equation}
+L_{x'}
+=
+\frac{1}{2+4q}
+\left(q,\;2+2q,\;q\right).
+\label{eq:toy-Lxp}
+\end{equation}
+These distributions coincide only when $q=1$, i.e. $\tau=0$.  Direct
+calculation gives Eq.~\eqref{eq:toy-TV}.
+\end{proof}
+
+The counterexample also gives an exact statistic-level witness.  Let
+\begin{equation}
+T_{\mathrm{diff}}(y_1,y_2)=(y_2-y_1)^2.
+\end{equation}
+Then
+\[
+\Pr_x\{T_{\mathrm{diff}}=4\}
+=\frac{1}{2+q},
+\qquad
+\Pr_{x'}\{T_{\mathrm{diff}}=4\}
+=\frac{q}{1+2q},
+\]
+and therefore
+\begin{equation}
+ d_{\mathrm{TV}}((T_{\mathrm{diff}})_\#L_x,(T_{\mathrm{diff}})_\#L_{x'})
+ =
+ \frac{1-q^2}{2q^2+5q+2}.
+\label{eq:toy-Tdiff-TV}
+\end{equation}
+Thus this simple order-sensitive statistic retains the entire fiber-level
+transport defect in the example.  This mirrors the role of $T_{\mathrm{diff}}$
+in the within-fiber computational diagnostic, where it was more sensitive to
+microstate-dependent null transport than the extremal-index statistic.
+
+Finally, Proposition~\ref{prop:half-diameter} implies that, on the fiber
+$\mathcal O^{-1}(1,1)$, every aggregate-only null $Q_Y(1,1,\cdot)$ must incur
+worst-case total-variation error at least
+\[
+\frac{1}{2}
+\frac{1-e^{-2\tau}}
+{2e^{-2\tau}+5e^{-\tau}+2},
+\]
+which tends to $1/4$ as $\tau\to\infty$.  The obstruction is therefore not
+merely that one particular index-level surrogate is poorly chosen: once the
+native kernel uses a microstate spectral feature erased by $\mathcal O$, no
+single null based only on the aggregate can be uniformly exact over the fiber.
+

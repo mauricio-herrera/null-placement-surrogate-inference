@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+
+% Review copy: one column, double spaced, numbered lines.
+% The scientific content has been reorganized for a statistics/methods audience.
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,bm,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs,array,multirow}
+\usepackage{setspace}
+\usepackage{lineno}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\providecommand{\tightlist}{}
+\setlength{\emergencystretch}{3em}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\newcommand{\dTV}{d_{\mathrm{TV}}}
+\newcommand{\Neff}{N_{\mathrm{eff},p}}
+
+\title{Null transport under temporal coarse-graining:\\ lumpability and surrogate inference for threshold-derived time series}
+\author{Mauricio Herrera-Mar\'in\\[2pt]
+\small Faculty of Engineering, Universidad del Desarrollo, Santiago, Chile\\
+\small \texttt{mherrera@udd.cl}\quad ORCID: 0000-0002-9604-3077}
+\date{}
+
+\begin{document}
+\doublespacing
+\linenumbers
+\maketitle
+
+\begin{abstract}
+Many environmental time-series analyses transform a native-resolution process into threshold-defined events and aggregated indices before imposing a resampling or surrogate null. We formulate the resulting problem as \emph{null transport}. A native randomization kernel $K_X$ and preprocessing map $\mathcal G$ admit an exact aggregate-space quotient null if and only if $K_X$ is strongly $\mathcal G$-lumpable: the pushed-forward law $\mathcal G_\#K_X(x,\cdot)$ must be constant over every fiber of $\mathcal G$. We give a quotient-kernel criterion, an unavoidable aggregate-only error bound when lumpability fails, and an exactly solvable example in which marginal-preserving spectral conditioning destroys lumpability after aggregation.
+
+In a prespecified 13,500-trajectory benchmark, an annual marginal-and-spectrum IAAFT contract and a native-resolution constrained surrogate produced 1084 index-only rejections versus 16 native-only rejections. Concentrating a fixed expected annual event count raised index-only discordance from 4.4\% to 16.2\%; probability equalization reduced it from 15.9\% to 3.9\% in an independent experiment. Post hoc mechanism diagnostics show that the discrepancy is small for a continuous Gaussian annual mean, grows as the observable approaches a hard threshold count, and is accompanied by strong projected-null distortion. A within-fiber experiment held the complete event chronology and aggregate count sequence fixed yet changed the native pushed-forward null, providing direct numerical evidence against strong lumpability of the implemented contract.
+
+A prospectively frozen application to 31 Chilean PM$_{2.5}$ monitoring stations (2018--2025) gave 29 index-only, zero native-only, and two joint rejections at the fixed $50\,\mu\mathrm{g\,m^{-3}}$ daily event threshold (region-level exact sign-flip $p=0.0039$). The index-null median Ferro--Segers center was 0.993 versus 0.557 for the native transported null. Equalizing monthly event probabilities reduced index-only decisions to five and reduced the null-center gap at all 31 stations. A prespecified null-width contraction prediction was not supported, showing that transport defects should be characterized through the full projected null distribution rather than variance alone. The inferential question is therefore not merely where a null is imposed, but whether that null can be transported through a lossy transformation and how any transport defect projects onto the chosen statistic.
+\end{abstract}
+
+\vspace{4pt}
+\noindent\textbf{Keywords:} null transport; lumpability; surrogate data; coarse-graining; threshold exceedances; temporal aggregation; extremal clustering; air pollution
+
+\clearpage
+\input{body_final.tex}
+
+\section*{Acknowledgements}
+OpenAI ChatGPT (GPT-5.6 Sol) was used to assist with manuscript revision. The author specified the scientific questions and analysis designs, reviewed the generated text and code, inspected the numerical outputs, and assumes full responsibility for the content. The author reports no external funding for this work.
+
+\paragraph{Data and code availability.}
+The complete reproducibility package corresponding to this manuscript is maintained through the versioned Zenodo archive associated with the public GitHub repository \texttt{mauricio-herrera/null-placement-surrogate-inference}. Release v2.0.0 contains the original confirmatory synthetic outputs, null-transport theory diagnostics, Gaussian and within-fiber analyses, the prospectively frozen SINCA station cohort and inferential protocol, the analysis-ready 2018--2025 PM$_{2.5}$ extract used here, executable scripts, and station-level outputs. Source air-quality observations are publicly available from Chile's National Air Quality Information System (SINCA) and were retrieved through the AtmChile interface.
+
+\section*{Conflict of Interest}
+The author declares no conflict of interest.
+
+\input{references_final.bbl}
+
+\end{document}
