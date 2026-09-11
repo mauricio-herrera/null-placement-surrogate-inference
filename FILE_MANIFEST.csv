@@ -2,10 +2,10 @@ path,bytes
 .DS_Store,6148
 .gitignore,157
 .zenodo.json,1551
-CITATION.cff,837
+CITATION.cff,913
 FINAL_REVISION_NOTES.md,1296
 LICENSE,1080
-README.md,2350
+README.md,2482
 RELEASE_NOTES_v1.0.0.md,590
 RELEASE_NOTES_v1.1.0.md,991
 RELEASE_NOTES_v2.0.0.md,1276
@@ -17,10 +17,10 @@ Supplementary_Material_Final.pdf,241559
 Supplementary_Material_Final.tex,15455
 body_final.tex,63729
 build.sh,669
-build_main_1.log,13514
+build_main_1.log,8177
 build_main_2.log,8177
 build_main_3.log,8177
-build_supp_1.log,7915
+build_supp_1.log,7042
 build_supp_2.log,7042
 build_supp_3.log,7042
 data/figure_data/figure1_stage3_paired_outcomes.csv,171
@@ -56,8 +56,8 @@ freeze_hashes/STAGE5_V060_FREEZE_SHA256.txt,400
 manuscript_final.aux,20765
 manuscript_final.log,24187
 manuscript_final.out,8689
-manuscript_final.pdf,516147
-manuscript_final.tex,5198
+manuscript_final.pdf,515946
+manuscript_final.tex,5288
 protocols/PROTOCOLO_STAGE2_MECHANISM_AUDIT_V030.md,5997
 protocols/PROTOCOLO_STAGE3_CONFIRMATORY_V040.md,8652
 protocols/PROTOCOLO_STAGE4_POWER_V050.md,10731
