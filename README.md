@@ -3,10 +3,9 @@
 
 This package contains the submission-oriented manuscript reconstruction after replacing the former CMIP6 Amazon illustration with a prospectively frozen SINCA PM2.5 application.
 
-
 ## Archived releases
 
-- **v2.0.0** — null transport, lumpability, mechanism diagnostics, and prospectively frozen SINCA PM2.5 application.
+- **v2.0.0** — null transport, lumpability, mechanism diagnostics, and prospectively frozen SINCA PM2.5 application; DOI `10.5281/zenodo.22713989`.
 - **v1.1.0** — SERRA metadata release; DOI `10.5281/zenodo.21910629`.
 - **v1.0.0** — original reproducibility release; DOI `10.5281/zenodo.21873328`.
 
@@ -31,5 +30,7 @@ This package contains the submission-oriented manuscript reconstruction after re
 ## Reproducibility
 
 `reproducibility/SINCA/` contains the frozen cohort, protocol, machine-readable manifest, analysis-ready input, station-level results, probability-equalization results, exposure sensitivity, and executable scripts. The synthetic/within-fiber mechanism diagnostics are under `reproducibility/diagnostics/`.
+
+The archived v2.0.0 reproducibility package is available at https://doi.org/10.5281/zenodo.22713989.
 
 The PDFs compile with the included `build.sh` without LaTeX warnings or overfull/underfull box warnings in the current environment.

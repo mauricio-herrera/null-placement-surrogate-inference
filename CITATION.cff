@@ -3,6 +3,8 @@ message: "If you use this reproducibility package, please cite the archived rele
 title: "Null transport under temporal coarse-graining: lumpability and surrogate inference for threshold-derived time series - reproducibility package"
 version: 2.0.0
 date-released: 2026-09-11
+doi: 10.5281/zenodo.22713989
+url: "https://doi.org/10.5281/zenodo.22713989"
 authors:
   - family-names: "Herrera-Marín"
     given-names: "Mauricio"
